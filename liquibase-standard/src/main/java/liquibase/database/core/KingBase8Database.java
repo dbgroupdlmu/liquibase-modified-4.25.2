@@ -54,7 +54,7 @@ public class KingBase8Database extends AbstractJdbcDatabase {
     private final Set<String> reservedWords = new HashSet<>();
 
     public KingBase8Database() {
-        super.setCurrentDateTimeFunction("NOW()");
+        super.setCurrentDateTimeFunction("GETDATE()");
         // "Reserved" or "reserved (can be function or type)" in PostgreSQL
         // from https://www.postgresql.org/docs/9.6/static/sql-keywords-appendix.html
         reservedWords.addAll(Arrays.asList("ALL", "ANALYSE", "ANALYZE", "AND", "ANY", "ARRAY", "AS", "ASC",

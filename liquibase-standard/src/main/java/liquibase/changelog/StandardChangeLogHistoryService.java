@@ -319,6 +319,7 @@ public class StandardChangeLogHistoryService extends AbstractChangeLogHistorySer
                     String comments = (rs.get("COMMENTS") == null) ? null : rs.get("COMMENTS").toString();
                     Object tmpDateExecuted = rs.get("DATEEXECUTED");
                     Date dateExecuted = null;
+                    System.out.println("WXT: "+this.getClass()+" "+dateExecuted);
                     if (tmpDateExecuted instanceof Date) {
                         dateExecuted = (Date) tmpDateExecuted;
                     } else if (tmpDateExecuted instanceof LocalDateTime) {

@@ -42,7 +42,7 @@ public class ClobType extends LiquibaseDataType {
     @Override
     public DatabaseDataType toDatabaseDataType(Database database) {
         String originalDefinition = StringUtil.trimToEmpty(getRawDefinition());
-        if (database instanceof MSSQLDatabase) {
+        if (database instanceof MSSQLDatabase || database instanceof  KingBase8Database) {
             if (originalDefinition.toLowerCase(Locale.US).startsWith("text") ||
                 originalDefinition.toLowerCase(Locale.US).startsWith("[text]") ||
                 originalDefinition.toLowerCase(Locale.US).startsWith("ntext") ||

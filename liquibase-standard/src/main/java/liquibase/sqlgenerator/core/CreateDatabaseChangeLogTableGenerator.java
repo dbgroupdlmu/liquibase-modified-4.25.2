@@ -29,6 +29,7 @@ public class CreateDatabaseChangeLogTableGenerator extends AbstractSqlGenerator<
     public Sql[] generateSql(CreateDatabaseChangeLogTableStatement statement, Database database, SqlGeneratorChain sqlGeneratorChain) {
         String charTypeName = getCharTypeName(database);
         String dateTimeTypeString = getDateTimeTypeString(database);
+        System.out.println("WXT: "+this.getClass()+" "+dateTimeTypeString);
         CreateTableStatement createTableStatement = new CreateTableStatement(database.getLiquibaseCatalogName(), database.getLiquibaseSchemaName(), database.getDatabaseChangeLogTableName())
                 .setTablespace(database.getLiquibaseTablespaceName())
                 .addColumn("ID", DataTypeFactory.getInstance().fromDescription(charTypeName + "(" + getIdColumnSize() + ")", database), null, null, new NotNullConstraint())

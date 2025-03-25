@@ -63,6 +63,7 @@ public class MarkChangeSetRanGenerator extends AbstractSqlGenerator<MarkChangeSe
                 }
 
             if (statement.getExecType().ranBefore) {
+                System.out.println("WXT: "+this.getClass()+" "+new DatabaseFunction(dateValue));
                 runStatement = new UpdateStatement(database.getLiquibaseCatalogName(), database.getLiquibaseSchemaName(), database.getDatabaseChangeLogTableName())
                         .addNewColumnValue("DATEEXECUTED", new DatabaseFunction(dateValue))
                         .addNewColumnValue("ORDEREXECUTED", Scope.getCurrentScope().getSingleton(ChangeLogHistoryServiceFactory.class).getChangeLogService(database).getNextSequenceValue())
@@ -81,6 +82,7 @@ public class MarkChangeSetRanGenerator extends AbstractSqlGenerator<MarkChangeSe
                         ((UpdateStatement) runStatement).addNewColumnValue("TAG", tag);
                     }
                 } else {
+                System.out.println("WXT: "+this.getClass()+" "+new DatabaseFunction(dateValue)+"  B");
                     runStatement = new InsertStatement(database.getLiquibaseCatalogName(), database.getLiquibaseSchemaName(), database.getDatabaseChangeLogTableName())
                             .addColumnValue("ID", changeSet.getId())
                             .addColumnValue("AUTHOR", changeSet.getAuthor())
